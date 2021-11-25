@@ -46,7 +46,7 @@ li,
   list-style: none;
 }
 input,
-button{
+button {
   outline: none;
 }
 .button {
@@ -120,7 +120,7 @@ button{
   font-size: 18px;
   width: 226px;
 }
-.list-item >    .input[type="text"] {
+.list-item > .input[type="text"] {
   width: 226px;
 }
 .delete .delete-icon {
