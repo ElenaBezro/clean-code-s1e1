@@ -18,8 +18,10 @@ body {
 }
 
 @media (max-width:768px) {
+
   .matrix-wrapper { text-align: center;
   }
+  
 }
 .tasks-wrapper {
   display: block;
