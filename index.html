@@ -5,54 +5,58 @@
     <link rel="stylesheet" href="style.css" media="screen" charset="utf-8">
   </head>
   <body class="app-page">
-    <div class="matrix-wrapper">
+    <article class="matrix-wrapper">
       <img class="eisenhower-matrix" src="./eisenhower-matrix.jpg">
       <a class="more-inf" href="https://goal-life.com/page/method/matrix-eisenhower">Want more details?</a>
-    </div>
-    <div class="tasks-wrapper">
-      <p id="add-new-task">
-        <label class="label" for="new-task">Add Item</label>
+    </article>
+    <article class="tasks-wrapper">
+      <section id="add-new-task">
+        <h3 class="tasks-title new-task-title">Add Item</h3>
         <div class="new-task-wrapper">
           <input id="new-task"class="task input" type="text">
           <button class="button">Add</button>
         </div>
-      </p>
-      <h3 class="tasks-title">Todo</h3>
-      <ul class="tasks-sublist" id="uncompleted-tasks">
-        <li class="list-item">
-          <input class="input" type="checkbox">
-          <label class="task label">Pay Bills</label>
-          <input type="text" class="task input text-input">
-          <button class="edit button">Edit</button>
-          <button class="delete button">
-            <img class="delete-icon" src="./remove.svg">
-          </button>
-        </li class="list-item">
-        <li class="edit-mode list-item">
-          <input class="input" type="checkbox">
-          <label class="task label">Go Shopping</label>
-          <input type="text"
-                 value="Go Shopping"
-                 class="task input text-input">
-          <button class="edit button">Save</button>
-          <button class="delete button">
-            <img class="delete-icon" src="./remove.svg">
-          </button>
-        </li>
-      </ul>
-      <h3 class="tasks-title">Completed</h3>
-      <ul class="tasks-sublist" id="completed-tasks">
-        <li class="list-item">
-          <input class="input" type="checkbox" checked>
-          <label class="task label">See the Doctor</label>
-          <input type="text" class="task input text-input">
-          <button class="edit button">Edit</button>
-          <button class="delete button">
-            <img class="delete-icon" src="./remove.svg">
-          </button>
-        </li>
-      </ul>
-    </div>
+      </section>
+      <section class="to-do-list-wrapper">
+        <h3 class="tasks-title">Todo</h3>
+        <ul class="tasks-sublist" id="uncompleted-tasks">
+          <li class="list-item">
+            <input class="input" type="checkbox">
+            <label class="task label">Pay Bills</label>
+            <input type="text" class="task input text-input">
+            <button class="edit button">Edit</button>
+            <button class="delete button">
+              <img class="delete-icon" src="./remove.svg">
+            </button>
+          </li class="list-item">
+          <li class="edit-mode list-item">
+            <input class="input" type="checkbox">
+            <label class="task label">Go Shopping</label>
+            <input type="text"
+                  value="Go Shopping"
+                  class="task input text-input">
+            <button class="edit button">Save</button>
+            <button class="delete button">
+              <img class="delete-icon" src="./remove.svg">
+            </button>
+          </li>
+        </ul>
+      </section>
+      <section class="complited-tasks-wrapper">
+        <h3 class="tasks-title">Completed</h3>
+        <ul class="tasks-sublist" id="completed-tasks">
+          <li class="list-item">
+            <input class="input" type="checkbox" checked>
+            <label class="task label">See the Doctor</label>
+            <input type="text" class="task input text-input">
+            <button class="edit button">Edit</button>
+            <button class="delete button">
+              <img class="delete-icon" src="./remove.svg">
+            </button>
+          </li>
+        </ul>
+      </section>
+    </article>
     <script src="app.js"></script>
   </body>
 </html>

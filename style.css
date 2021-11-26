@@ -74,8 +74,7 @@ button {
 }
 
 /* Heading */
-.tasks-title,
-.label[for="new-task"] {
+.tasks-title {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -103,9 +102,9 @@ button {
 }
 
 /* New Task */
-.label[for="new-task"] {
+.new-task-title {
   display: block;
-  margin: 0 0 20px;
+  margin: 0 0 20px !important;
 }
 
 #new-task {
