@@ -8,42 +8,62 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput=document.getElementById("new-task");//Add a new task.
+var taskInput=document.querySelector(".new_task__input");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".tasks__uncompleted_tasks_list");//ul of tasks__uncompleted_tasks_list
+var completedTasksHolder=document.querySelector(".tasks__completed_tasks_list");//tasks__completed_tasks_list
 
 
 //New task list item
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
+    listItem.classList.add("tasks__list_item");
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
+    checkBox.classList.add("task__input");
+    checkBox.classList.add("task__checkbox_input");
+
     //label
     var label=document.createElement("label");//label
+    label.classList.add("tasks__task_label");
+
     //input (text)
     var editInput=document.createElement("input");//text
+    editInput.classList.add("task__input");
+    editInput.classList.add("task__text_input");
+    editInput.classList.add("task__text_input_added");
+
     //button.edit
     var editButton=document.createElement("button");//edit button
+    editButton.classList.add("task__button");
+
 
     //button.delete
     var deleteButton=document.createElement("button");//delete button
+    deleteButton.classList.add("task__button");
+
     var deleteButtonImg=document.createElement("img");//delete button image
+    deleteButtonImg.classList.add("task__delete_button_icon");
+    deleteButtonImg.setAttribute("alt", "");
 
     label.innerText=taskString;
-    label.className='task';
+    label.classList.add('tasks__task');
+    label.classList.add('tasks__task_label');
+
 
     //Each elements, needs appending
     checkBox.type="checkbox";
     editInput.type="text";
-    editInput.className="task";
+    editInput.classList.add("tasks__task");
+    editInput.classList.add("task__input");
+    editInput.classList.add("task__text_input");
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.classList.add("task__edit_button");
 
-    deleteButton.className="delete";
+    deleteButton.classList.add("task__delete_button");
     deleteButtonImg.src='./remove.svg';
     deleteButton.appendChild(deleteButtonImg);
 
@@ -59,9 +79,12 @@ var createNewTaskElement=function(taskString){
 
 
 
+
+
+
 var addTask=function(){
     console.log("Add Task...");
-    //Create a new list item with the text from the #new-task:
+    //Create a new list item with the text from the #new_task__input:
     if (!taskInput.value) return;
     var listItem=createNewTaskElement(taskInput.value);
 
@@ -83,23 +106,25 @@ var editTask=function(){
     var listItem=this.parentNode;
 
     var editInput=listItem.querySelector('input[type=text]');
-    var label=listItem.querySelector("label");
-    var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("editMode");
-    //If class of the parent is .editmode
+    var label=listItem.querySelector(".tasks__task_label");
+    var editBtn=listItem.querySelector(".task__edit_button");
+    var containsClass=listItem.classList.contains("tasks__list_item_edit_mode");
+    //If class of the parent is .tasks__list_item_edit_mode
     if(containsClass){
-
-        //switch to .editmode
+        
+        //switch to .tasks__list_item_edit_mode
         //label becomes the inputs value.
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
-    }else{
+    }else{        
         editInput.value=label.innerText;
         editBtn.innerText="Save";
     }
 
-    //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    //toggle .tasks__list_item_edit_mode on the parent.
+    listItem.classList.toggle("tasks__list_item_edit_mode");
+    editInput.classList.toggle("task__text_input_edit");
+    label.classList.toggle("tasks__task_label_edit");
 };
 
 
@@ -119,9 +144,10 @@ var deleteTask=function(){
 var taskCompleted=function(){
     console.log("Complete Task...");
 
-    //Append the task list item to the #completed-tasks
+    //Append the task list item to the #tasks__completed_tasks_list
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
+    listItem.querySelector('.tasks__task_label').classList.toggle('tasks__completed_tasks_list__task_label', true);
     bindTaskEvents(listItem, taskIncomplete);
 
 }
@@ -131,9 +157,10 @@ var taskIncomplete=function(){
     console.log("Incomplete Task...");
 //Mark task as incomplete.
     //When the checkbox is unchecked
-    //Append the task list item to the #incompleteTasks.
+    //Append the task list item to the #tasks__uncompleted_tasks_list.
     var listItem=this.parentNode;
     incompleteTaskHolder.appendChild(listItem);
+    listItem.querySelector('.tasks__task_label').classList.toggle('tasks__completed_tasks_list__task_label', false);
     bindTaskEvents(listItem,taskCompleted);
 }
 
@@ -156,8 +183,8 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     console.log("bind list item events");
 //select ListItems children
     var checkBox=taskListItem.querySelector("input[type=checkbox]");
-    var editButton=taskListItem.querySelector("button.edit");
-    var deleteButton=taskListItem.querySelector("button.delete");
+    var editButton=taskListItem.querySelector("button.task__edit_button");
+    var deleteButton=taskListItem.querySelector("button.task__delete_button");
 
 
     //Bind editTask to edit button.
